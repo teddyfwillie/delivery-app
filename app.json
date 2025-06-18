@@ -9,12 +9,18 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "AIzaSyDrGE2AFPDoxtOIEXQq6I0vte_W33dJdI8"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "googleMapsApiKey": "AIzaSyDrGE2AFPDoxtOIEXQq6I0vte_W33dJdI8"
       },
       "edgeToEdgeEnabled": true
     },
@@ -33,7 +39,14 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
-      ]
+      ],
+      ["expo-location", {
+        "locationWhenInUsePermission": "Allow $(PRODUCT_NAME) to use your location for finding nearby businesses and delivery tracking."
+      }],
+      ["expo-maps", {
+        "requestLocationPermission": true,
+        "locationPermission": "Allow $(PRODUCT_NAME) to access your location"
+      }]
     ],
     "experiments": {
       "typedRoutes": true

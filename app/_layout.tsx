@@ -8,9 +8,11 @@ import { Stack, useRouter, useSegments } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { useEffect } from "react";
 import "react-native-reanimated";
+import { Provider } from "react-redux";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
 import { AuthProvider, useAuth } from "../contexts/AuthContext";
+import store from "../store";
 
 // Auth protection for routes
 function AuthProtection() {
@@ -29,7 +31,8 @@ function AuthProtection() {
         currentUser &&
         !inAuthGroup &&
         segments[0] !== "profile" &&
-        segments[0] !== "change-password"
+        segments[0] !== "change-password" &&
+        segments[0] !== "address"
       ) {
         // Redirect to home if user is authenticated and trying to access auth screens
         router.replace("/(tabs)");
@@ -60,6 +63,11 @@ function RootLayoutNav() {
           name="change-password"
           options={{ title: "Change Password" }}
         />
+        <Stack.Screen 
+          name="address" 
+          options={{ headerShown: false }}
+        />
+        {/* Address routes are handled by the nested layout in app/address/_layout.js */}
       </Stack>
       <StatusBar style="auto" />
     </ThemeProvider>
@@ -77,8 +85,10 @@ export default function RootLayout() {
   }
 
   return (
-    <AuthProvider>
-      <RootLayoutNav />
-    </AuthProvider>
+    <Provider store={store}>
+      <AuthProvider>
+        <RootLayoutNav />
+      </AuthProvider>
+    </Provider>
   );
 }
