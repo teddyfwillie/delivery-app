@@ -23,18 +23,19 @@ function AuthProtection() {
   useEffect(() => {
     if (!loading) {
       const inAuthGroup = segments[0] === "(tabs)";
-
+      // List of public routes that don't require authentication and shouldn't redirect
+      const publicRoutes = ["business", "category", "search", "profile", "change-password", "address", "cart", "checkout"];
+      
       if (!currentUser && inAuthGroup) {
         // Redirect to login if user is not authenticated but trying to access protected routes
         router.replace("/login");
       } else if (
         currentUser &&
         !inAuthGroup &&
-        segments[0] !== "profile" &&
-        segments[0] !== "change-password" &&
-        segments[0] !== "address"
+        !publicRoutes.includes(segments[0])
       ) {
         // Redirect to home if user is authenticated and trying to access auth screens
+        // But allow navigation to public routes like business, category, search, etc.
         router.replace("/(tabs)");
       }
     }

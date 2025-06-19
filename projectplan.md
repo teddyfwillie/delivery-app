@@ -66,7 +66,7 @@ A mobile application that connects users with local businesses for food delivery
 
 #### Tasks:
 
-- [ ] Implement home screen with nearby businesses
+- [ ] Implement home screen with nearby registered businesses (mock-data)
 - [ ] Create business category filtering
 - [ ] Develop business detail pages
 - [ ] Implement product browsing functionality
@@ -77,7 +77,6 @@ A mobile application that connects users with local businesses for food delivery
   - [ ] Payment method selection
   - [ ] Order review and confirmation
 - [ ] Implement order tracking
-- [ ] Create ratings and review system
 - [ ] Implement order history
 
 ### Checkpoint 5: Business Owner Portal (3 weeks)
